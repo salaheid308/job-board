@@ -1,0 +1,46 @@
+﻿@model IEnumerable<job_offers.Models.jobsview >
+
+@{
+    ViewBag.Title = "getjobsbypuplisher";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+
+
+
+
+
+@foreach (var kind in Model)
+{
+    <h3>@kind.jobtitle</h3>
+    <table class="table table-bordered table-hover"  >
+    <tr>
+        <th>
+            name of sender
+        </th>
+        <th>
+            the message of the sender
+        </th>
+        <th>
+           date of applied
+        </th>
+       
+    </tr>
+        @foreach (var item in kind.items )
+        {
+            <tr>
+                <td>
+                    @item.user.UserName
+                </td>
+                <td>
+                    @item.message
+                </td>
+                <td>
+                    @item.applydate
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+

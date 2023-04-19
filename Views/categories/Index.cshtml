@@ -1,0 +1,40 @@
+﻿@model IEnumerable<job_offers.Models.category>
+
+@{
+    ViewBag.Title = "categories";
+    
+}
+
+<h2>cato</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categoryname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categorydicrption)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoryname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categorydicrption)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

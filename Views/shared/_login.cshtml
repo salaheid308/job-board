@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNet.Identity
+@using WebApplication1.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logof" }))
+    {
+        var db = new ApplicationDbContext();
+        var userid = User.Identity.GetUserId();
+        var currentuser = db.Users.Where(a => a.Id == userid).SingleOrDefault();
+        
+        
+        @Html.AntiForgeryToken()
+       
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item cta mr-md-1" style="margin-top:0px">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    hellow:@currentuser.UserName
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @if (currentuser.usertype == "puplisher")
+                    {
+                        <a class="dropdown-item" href="~/Home/getjobsbypuplisher">jobs that i posted it</a>
+                        <a class="dropdown-item" href="~/jobs/create ">add new job</a>
+                    }
+                    else
+                    {
+                    <a class="dropdown-item" href="~/Home/getjobsbyuser">job that apply to it</a>
+                    }
+                    <a class="dropdown-item" href="~/Account/editprofile">edit the profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="javascript:document.getElementById('logof').submit()" class="dropdown-item">log off</a>
+                </div>
+            </li>
+                    
+                       
+                        
+                          
+                        
+
+
+                        
+                      
+            
+            @*<li class="nav-item cta cta-colored"><a href="javascript:document.getElementById('logof').submit()" class="nav-link">log off</a></li>*@
+            </ul>
+
+    }
+}
+
+
+else
+{
+    
+        <li class="nav-item cta mr-md-1"><a href="~/Account/Login" class="nav-link">log in</a></li>
+        <li class="nav-item cta cta-colored"><a href="~/Account/Register" class="nav-link">subscrip</a></li>
+        
+        }

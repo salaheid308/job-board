@@ -1,0 +1,24 @@
+﻿@model IEnumerable<job_offers.Models.job>
+
+@{
+    ViewBag.Title = "searsh";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+
+<div class="panel panel-default">
+    <h1 class="panel-heading"> the result of the searsh </h1>
+   
+</div>
+<div class="row panel-default" >
+    @foreach (var sub in Model)
+    {
+        <div class="col-md-3 thumbnail" style="margin-left:20px; margin-bottom:30px; height:380px; ">
+            <img src="~/uploads/@sub.jobimg" class="thumbnail" style="width:300px;height:288px;" />
+            <h2>@sub.jobtitle </h2>
+            <h5>@sub.jobdiscrption</h5>
+            @Html.ActionLink("details", "details", new { jobid = sub.id }, new { @class = "btn btn-primary" })
+        </div>
+    }
+
+</div>
+

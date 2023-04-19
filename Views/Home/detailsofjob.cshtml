@@ -1,0 +1,52 @@
+﻿@model job_offers.Models.job
+
+@{
+    ViewBag.Title = "detailsofjob";
+    Layout = "~/Views/shared/_mainlayout.cshtml";
+}
+
+<h2>detailsofjob</h2>
+
+<div>
+    <h4>job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.category.categoryname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.categoryname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobtitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobtitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobimg)
+        </dt>
+
+        <dd>
+            <img src="~/uploads/@Html.DisplayFor(model => model.jobimg)"
+                 class="thumbnail" style="width:48px;height:48px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobdiscrption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobdiscrption)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
